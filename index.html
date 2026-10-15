@@ -91,6 +91,8 @@ section { padding-block: 88px; }
 .btn:hover { transform: translateY(-1px); }
 .btn-wa { background: var(--teal); color: #fff; box-shadow: 0 10px 24px -12px var(--teal); }
 .btn-tg { background: var(--blue); color: #fff; box-shadow: 0 10px 24px -12px var(--blue); }
+.btn-wc { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.btn-wc svg { color: #07C160; }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--surface); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -199,6 +201,21 @@ section { padding-block: 88px; }
 .phone { display: grid; gap: 10px; justify-items: start; position: relative; z-index: 1; min-width: 0; margin-top: 10px; padding-top: 22px; border-top: 1px solid var(--line); }
 .tg-user { font-weight: 600; color: var(--muted); }
 .tg-user a { color: var(--blue); }
+.linkish { border: 0; background: none; padding: 0; font: inherit; color: var(--blue); text-decoration: underline; cursor: pointer; overflow-wrap: anywhere; }
+dialog#wc-dialog { border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--ink); padding: 0; width: min(420px, calc(100vw - 32px)); box-shadow: var(--shadow); }
+dialog#wc-dialog::backdrop { background: rgba(8, 22, 38, .55); }
+.wc-box { padding: 26px; display: grid; gap: 16px; }
+.wc-head { display: flex; align-items: center; gap: 12px; }
+.wc-head h3 { font-size: 22px; flex: 1; }
+.wc-ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, #07C160 14%, transparent); color: #07C160; }
+.wc-ico svg { width: 24px; height: 24px; }
+.wc-close { border: 0; background: none; color: var(--muted); font-size: 28px; line-height: 1; cursor: pointer; padding: 4px 8px; }
+.wc-box p { color: var(--muted); }
+.wc-row { display: grid; gap: 6px; justify-items: start; padding-top: 14px; border-top: 1px solid var(--line); }
+.wc-row small { font: 600 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.wc-row output { font: 700 18px/1.2 var(--f-display); user-select: all; overflow-wrap: anywhere; }
+.wc-row .btn { padding: 10px 16px; font-size: 14px; }
+.wc-steps { font-size: 14px; }
 .quiz { display: grid; gap: 22px; position: relative; z-index: 1; min-width: 0; }
 .quiz fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
 .quiz legend { font: 700 13px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px; }
@@ -222,7 +239,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 /* Mobile sticky CTA */
 .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
-.dock .btn { flex: 1; padding: 14px 12px; font-size: 15px; }
+.dock { gap: 8px; }
+.dock .btn { flex: 1; padding: 13px 6px; font-size: 14px; gap: 6px; }
+.dock .btn svg { width: 18px; height: 18px; }
 @media (max-width: 720px) { .dock { display: flex; } section { padding-block: 64px; } .hero { padding-block: 44px 64px; } }
 
 .hero-copy > *, .pass { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
@@ -235,6 +254,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.2-14.9c.3-1.3-.5-1.9-1.4-1.5ZM9.3 14.1l9.4-5.9c.5-.3.9-.1.5.2l-8 7.3-.3 3.3-1.6-4.9Z"/></symbol>
   <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/></symbol>
+  <symbol id="i-wc" viewBox="0 0 24 24"><path fill="currentColor" d="M9 3C4.6 3 1 6 1 9.7c0 2.1 1.2 4 3 5.2L3.3 17l2.6-1.3c.9.3 1.9.4 3 .4h.3a5.6 5.6 0 0 1-.2-1.5c0-3.6 3.4-6.4 7.6-6.4h.4C16.3 5.2 13 3 9 3Zm-2.7 3.6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm5.4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM16.6 9.6c-3.6 0-6.4 2.4-6.4 5.3s2.8 5.3 6.4 5.3c.8 0 1.6-.1 2.3-.4l2.1 1.1-.6-1.8c1.5-1 2.6-2.5 2.6-4.2 0-2.9-2.8-5.3-6.4-5.3Zm-2.2 2.7a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm4.4 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
 </svg>
 
@@ -270,6 +290,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div class="btn-row">
           <a class="btn btn-wa js-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span data-i18n="btn_wa">Написать в WhatsApp</span></a>
           <a class="btn btn-tg js-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="btn_tg">Написать в Telegram</span></a>
+          <button type="button" class="btn btn-wc js-wc"><svg><use href="#i-wc"/></svg><span data-i18n="btn_wc">WeChat</span></button>
         </div>
         <div class="facts">
           <div class="fact"><b>20+</b><span data-i18n="fact_years">лет опыта в туризме</span></div>
@@ -422,9 +443,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h2 data-i18n="cta_title">Расскажите о поездке, остальное сделаем мы</h2>
           <p data-i18n="cta_lead">Ответьте на три вопроса, и мы получим вашу заявку сразу с деталями. Или просто напишите в мессенджер.</p>
           <div class="phone">
-            <small data-i18n="phone_l">WhatsApp и Telegram</small>
+            <small data-i18n="phone_l">WhatsApp, Telegram, WeChat</small>
             <output id="phone">+375 44 490-61-97</output>
             <span class="tg-user">Telegram: <a href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener">@Ul_Tim_IR</a></span>
+            <span class="tg-user">WeChat ID: <button type="button" class="linkish js-wc">wxid_pf47jnluaeyu22</button></span>
             <button class="btn btn-ghost" type="button" id="copy-phone" data-i18n="copy">Скопировать номер</button>
           </div>
         </div>
@@ -459,6 +481,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <div class="btn-row">
             <a class="btn btn-wa" id="quiz-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span data-i18n="send_wa">Отправить в WhatsApp</span></a>
             <a class="btn btn-tg" id="quiz-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="send_tg">Отправить в Telegram</span></a>
+            <button type="button" class="btn btn-wc" id="quiz-wc"><svg><use href="#i-wc"/></svg><span data-i18n="send_wc">Отправить в WeChat</span></button>
           </div>
           <p class="quiz-hint" id="quiz-hint" data-i18n="tg_hint">Для Telegram текст заявки скопируется, останется вставить его в чат.</p>
         </form>
@@ -477,7 +500,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <div class="dock">
   <a class="btn btn-wa js-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
   <a class="btn btn-tg js-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
+  <button type="button" class="btn btn-wc js-wc"><svg><use href="#i-wc"/></svg>WeChat</button>
 </div>
+
+<dialog id="wc-dialog" aria-labelledby="wc-title">
+  <div class="wc-box">
+    <div class="wc-head"><span class="wc-ico"><svg><use href="#i-wc"/></svg></span><h3 id="wc-title">WeChat</h3><button type="button" class="wc-close" id="wc-close" aria-label="Close">×</button></div>
+    <p data-i18n="wc_lead">Добавьте нас в WeChat по ID или номеру телефона.</p>
+    <div class="wc-row"><small>WeChat ID</small><output id="wc-id">wxid_pf47jnluaeyu22</output><button type="button" class="btn btn-ghost" id="wc-copy" data-i18n="wc_copy">Скопировать ID</button></div>
+    <div class="wc-row"><small data-i18n="wc_phone">Телефон</small><output>+375 44 490-61-97</output></div>
+    <p class="wc-steps" data-i18n="wc_steps">WeChat → «+» → «Добавить контакт» → вставьте ID.</p>
+    <p class="quiz-hint ok" id="wc-note" hidden data-i18n="wc_note">Текст заявки скопирован. Отправьте его нам в чат WeChat.</p>
+  </div>
+</dialog>
 
 <script>
 (function () {
@@ -524,7 +559,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "Бронируем и организуем", h3_p: "Отели, билеты, трансферы, залы, визы. Вы согласовываете, мы делаем.",
       h4_t: "Ведём поездку", h4_p: "Остаёмся на связи всю поездку и решаем вопросы на месте.",
       cta_eyebrow: "Заявка", cta_title: "Расскажите о поездке, остальное сделаем мы", cta_lead: "Ответьте на три вопроса, и мы получим заявку сразу с деталями. Ответим в течение 15 минут.",
-      phone_l: "WhatsApp и Telegram", copy: "Скопировать номер", copied: "Номер скопирован",
+      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Отправить в WeChat", wc_lead: "Добавьте нас в WeChat по ID или номеру телефона.", wc_copy: "Скопировать ID", wc_copied: "ID скопирован", wc_phone: "Телефон", wc_steps: "WeChat → «+» → «Добавить контакт» → вставьте ID.", wc_note: "Текст заявки скопирован. Отправьте его нам в чат WeChat.", copy: "Скопировать номер", copied: "Номер скопирован",
       q1: "Формат", q1_a: "MICE / конференция", q1_b: "Тимбилдинг", q1_c: "Поездка на событие", q1_d: "Спортивные сборы",
       q2: "Сколько человек", q3: "Бюджет", q3_a: "Эконом", q3_b: "Средний", q3_c: "Премиум", q3_d: "Пока не знаю",
       send_wa: "Отправить в WhatsApp", send_tg: "Отправить в Telegram",
@@ -572,7 +607,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "We book and organise", h3_p: "Hotels, tickets, transfers, halls, visas. You approve, we do the work.",
       h4_t: "We stay with you", h4_p: "We stay in touch for the whole trip and solve issues on site.",
       cta_eyebrow: "Request", cta_title: "Tell us about your trip and we'll take care of the rest", cta_lead: "Answer three quick questions and your request reaches us with the details. We reply within 15 minutes.",
-      phone_l: "WhatsApp and Telegram", copy: "Copy number", copied: "Number copied",
+      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Send via WeChat", wc_lead: "Add us on WeChat by ID or phone number.", wc_copy: "Copy ID", wc_copied: "ID copied", wc_phone: "Phone", wc_steps: "WeChat → \"+\" → \"Add Contacts\" → paste the ID.", wc_note: "Request text copied. Send it to us in WeChat.", copy: "Copy number", copied: "Number copied",
       q1: "Format", q1_a: "MICE / conference", q1_b: "Team building", q1_c: "Trip to an event", q1_d: "Sports camp",
       q2: "Group size", q3: "Budget", q3_a: "Economy", q3_b: "Mid-range", q3_c: "Premium", q3_d: "Not sure yet",
       send_wa: "Send via WhatsApp", send_tg: "Send via Telegram",
@@ -620,7 +655,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "预订与组织", h3_p: "酒店、票务、接送、会议厅、签证。您确认，我们执行。",
       h4_t: "全程陪同", h4_p: "整个行程保持联系，现场解决问题。",
       cta_eyebrow: "提交需求", cta_title: "告诉我们您的出行计划，其余交给我们", cta_lead: "回答三个简单问题，您的需求将连同细节一起发送给我们。我们将在 15 分钟内回复。",
-      phone_l: "WhatsApp 与 Telegram", copy: "复制号码", copied: "号码已复制",
+      phone_l: "WeChat、WhatsApp、Telegram", btn_wc: "微信", send_wc: "通过微信发送", wc_lead: "通过微信号或手机号添加我们为好友。", wc_copy: "复制微信号", wc_copied: "微信号已复制", wc_phone: "手机号", wc_steps: "微信 → 右上角「+」→「添加朋友」→ 粘贴微信号。", wc_note: "需求文本已复制，请在微信中发送给我们。", copy: "复制号码", copied: "号码已复制",
       q1: "形式", q1_a: "MICE / 会议", q1_b: "团建", q1_c: "活动出行", q1_d: "体育集训",
       q2: "人数", q3: "预算", q3_a: "经济", q3_b: "中等", q3_c: "高端", q3_d: "暂不确定",
       send_wa: "通过 WhatsApp 发送", send_tg: "通过 Telegram 发送",
@@ -655,6 +690,23 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     document.getElementById("quiz-wa").href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(quizText());
     hint.classList.remove("ok"); hint.textContent = T[cur].tg_hint;
   }
+  var dlg = document.getElementById("wc-dialog"), note = document.getElementById("wc-note");
+  function openWc(withNote) {
+    note.hidden = !withNote;
+    try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); }
+  }
+  document.querySelectorAll(".js-wc").forEach(function (b) { b.addEventListener("click", function () { openWc(false); }); });
+  document.getElementById("wc-close").addEventListener("click", function () { dlg.close ? dlg.close() : dlg.removeAttribute("open"); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+  document.getElementById("wc-copy").addEventListener("click", function () {
+    var b = this;
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById("wc-id")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText("wxid_pf47jnluaeyu22").then(function () { b.textContent = T[cur].wc_copied; setTimeout(function () { b.textContent = T[cur].wc_copy; }, 2000); }, sel); } catch (e) { sel(); }
+  });
+  document.getElementById("quiz-wc").addEventListener("click", function () {
+    var t = quizText();
+    try { navigator.clipboard.writeText(t).then(function () { openWc(true); }, function () { openWc(false); }); } catch (e) { openWc(false); }
+  });
   quiz.addEventListener("change", updateQuiz);
   quiz.addEventListener("submit", function (e) { e.preventDefault(); });
   document.getElementById("quiz-tg").addEventListener("click", function () {
