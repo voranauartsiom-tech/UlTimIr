@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UlTimIr Digital Agency</title>
+<meta name="description" content="UlTimIr: digital-агентство по туризму. MICE, тимбилдинги, спортивные сборы и групповые поездки на события под ключ. Заявки в WhatsApp и Telegram.">
+<meta property="og:title" content="UlTimIr Digital Agency">
+<meta property="og:description" content="Деловые поездки, MICE, тимбилдинги и спортивные сборы под ключ.">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: brand header, hero with a "boarding pass" that turns a request into a trip, then directions, services, reasons, hockey portfolio, steps, and a closing call to message us. */
+:root {
+  --bg: #F6F9FC;
+  --surface: #FFFFFF;
+  --ink: #0E2A52;          /* navy from the wordmark */
+  --muted: #4E6280;
+  --line: #DCE5F0;
+  --blue: #1765C1;         /* left stroke of the emblem */
+  --teal: #12B597;         /* right stroke of the emblem */
+  --teal-ink: #0B8A73;
+  --band: #0E2A52;
+  --band-ink: #EAF2FB;
+  --band-muted: #A9BDD6;
+  --emblem-bg: transparent;
+  --shadow: 0 18px 40px -22px rgba(14, 42, 82, .35);
+  --grad: linear-gradient(120deg, var(--blue) 0%, var(--teal) 100%);
+  --f-display: "Unbounded", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --f-body: "Manrope", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #081626; --surface: #0F223A; --ink: #E7F0FA; --muted: #9EB2CC; --line: #1E3657;
+    --blue: #4A97EC; --teal: #2BD3B2; --teal-ink: #46DDBF; --band: #0C1D33; --band-ink: #EAF2FB; --band-muted: #9EB2CC;
+    --emblem-bg: #F6F9FC; --shadow: 0 18px 40px -22px rgba(0,0,0,.7); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #081626; --surface: #0F223A; --ink: #E7F0FA; --muted: #9EB2CC; --line: #1E3657;
+  --blue: #4A97EC; --teal: #2BD3B2; --teal-ink: #46DDBF; --band: #0C1D33; --band-ink: #EAF2FB; --band-muted: #9EB2CC;
+  --emblem-bg: #F6F9FC; --shadow: 0 18px 40px -22px rgba(0,0,0,.7); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font: 600 13px/1.3 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--teal-ink); }
+section { padding-block: 88px; }
+.sec-head { display: grid; gap: 14px; max-width: 720px; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 42px); }
+.sec-head p { color: var(--muted); font-size: 18px; }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { width: 44px; height: 44px; background: var(--emblem-bg); border-radius: 10px; padding: 2px; }
+.wordmark { font: 700 22px/1 var(--f-display); color: var(--ink); letter-spacing: -.02em; }
+.wordmark b { color: var(--teal); font-weight: 700; }
+.brand small { display: block; font: 600 9px/1 var(--f-body); letter-spacing: .28em; color: var(--muted); margin-top: 5px; }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.langs { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+.langs button { border: 0; background: none; font: 700 13px/1 var(--f-body); color: var(--muted); padding: 8px 11px; border-radius: 999px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.top .btn { padding: 11px 18px; font-size: 15px; }
+@media (max-width: 980px) { .nav { display: none; } .langs { margin-left: auto; } }
+@media (max-width: 560px) { .top .btn { display: none; } .brand small { display: none; } .wordmark { font-size: 19px; } .brand img { width: 38px; height: 38px; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 700 16px/1 var(--f-body); padding: 16px 24px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; white-space: nowrap; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn:hover { transform: translateY(-1px); }
+.btn-wa { background: var(--teal); color: #fff; box-shadow: 0 10px 24px -12px var(--teal); }
+.btn-tg { background: var(--blue); color: #fff; box-shadow: 0 10px 24px -12px var(--blue); }
+.btn-ghost { border-color: var(--line); color: var(--ink); background: var(--surface); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Hero */
+.hero { padding-block: 72px 88px; position: relative; overflow: hidden; }
+.hero .trail { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .trail path { fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 2 10; stroke-linecap: round; opacity: .35; }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.hero h1 { font-size: clamp(34px, 5.4vw, 60px); }
+.hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .lead { font-size: 19px; color: var(--muted); max-width: 580px; }
+.hero .note { font-size: 14px; color: var(--muted); }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 8px; padding-top: 22px; border-top: 1px solid var(--line); }
+.fact b { display: block; font: 700 26px/1.1 var(--f-display); color: var(--ink); }
+.fact span { font-size: 14px; color: var(--muted); }
+
+/* Boarding pass */
+.pass { background: var(--surface); border-radius: 22px; box-shadow: var(--shadow); border: 1px solid var(--line); overflow: hidden; min-width: 0; transform: rotate(1.5deg); }
+.pass-head { background: var(--grad); color: #fff; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.pass-head span { font: 700 13px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; }
+.pass-head svg { width: 26px; height: 26px; }
+.pass-route { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; padding: 22px 24px 8px; }
+.pass-route small { display: block; font: 600 11px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.pass-route b { font: 700 19px/1.15 var(--f-display); }
+.pass-route .to { text-align: right; }
+.pass-route .plane { color: var(--teal); width: 28px; height: 28px; }
+.pass-list { list-style: none; margin: 0; padding: 14px 24px 20px; display: grid; gap: 10px; }
+.pass-list li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
+.tick { width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--teal) 16%, transparent); color: var(--teal-ink); display: grid; place-items: center; flex: none; }
+.tick svg { width: 13px; height: 13px; }
+.pass-stub { border-top: 2px dashed var(--line); position: relative; padding: 16px 24px 20px; display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.pass-stub::before, .pass-stub::after { content: ""; position: absolute; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: var(--bg); }
+.pass-stub::before { left: -13px; } .pass-stub::after { right: -13px; }
+.pass-stub small { display: block; font: 600 11px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.pass-stub b { font: 700 16px/1.2 var(--f-display); color: var(--teal-ink); }
+.barcode { height: 38px; width: 120px; flex: none; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 13px); opacity: .8; border-radius: 2px; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } .pass { transform: none; max-width: 480px; } }
+
+/* Directions */
+.dirs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.dir { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.dir-ico { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--blue) 12%, transparent); color: var(--blue); }
+.dir:nth-child(even) .dir-ico { background: color-mix(in srgb, var(--teal) 14%, transparent); color: var(--teal-ink); }
+.dir-ico svg { width: 26px; height: 26px; }
+.dir h3 { font-size: 21px; }
+.dir p { color: var(--muted); }
+.tag { justify-self: start; font: 700 12px/1 var(--f-body); letter-spacing: .06em; padding: 7px 10px; border-radius: 999px; background: color-mix(in srgb, var(--teal) 16%, transparent); color: var(--teal-ink); }
+@media (max-width: 760px) { .dirs { grid-template-columns: 1fr; } .dir { padding: 24px; } }
+
+/* Services */
+.services { background: var(--surface); border-block: 1px solid var(--line); }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid var(--line); }
+.svc { display: flex; gap: 16px; align-items: flex-start; padding: 24px 20px 24px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.svc svg { width: 24px; height: 24px; color: var(--blue); flex: none; margin-top: 3px; }
+.svc b { display: block; font-size: 18px; margin-bottom: 4px; }
+.svc span { color: var(--muted); font-size: 15px; }
+
+/* Why */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.why { display: grid; gap: 12px; align-content: start; padding-top: 22px; border-top: 3px solid var(--blue); }
+.why:nth-child(2) { border-color: color-mix(in srgb, var(--blue) 50%, var(--teal)); }
+.why:nth-child(3) { border-color: var(--teal); }
+.why h3 { font-size: 22px; }
+.why p { color: var(--muted); }
+.why-foot { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px 40px; color: var(--muted); font-weight: 600; }
+.why-foot span::before { content: "/ "; color: var(--teal); }
+@media (max-width: 860px) { .why-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Portfolio */
+.cases { background: var(--band); color: var(--band-ink); }
+.cases .sec-head p { color: var(--band-muted); }
+.cases .eyebrow { color: var(--teal); }
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.club { border: 1px solid color-mix(in srgb, var(--band-ink) 18%, transparent); border-radius: var(--r); padding: 22px 18px; display: grid; gap: 10px; min-width: 0; }
+.club small { font: 700 11px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--teal); }
+.club b { font: 700 20px/1.15 var(--f-display); overflow-wrap: anywhere; }
+.club span { font-size: 14px; color: var(--band-muted); }
+.biz-title { font-size: clamp(22px, 2.6vw, 28px); margin-top: 56px; margin-bottom: 20px; }
+.biz { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.biz-card { border: 1px solid color-mix(in srgb, var(--band-ink) 18%, transparent); border-radius: var(--r); padding: 26px; display: grid; gap: 10px; align-content: start; min-width: 0; background: color-mix(in srgb, var(--band-ink) 4%, transparent); }
+.biz-card small { font: 700 11px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--teal); }
+.biz-card h4 { margin: 0; font: 700 20px/1.2 var(--f-display); text-wrap: balance; }
+.biz-card p { color: var(--band-muted); }
+@media (max-width: 760px) { .biz { grid-template-columns: 1fr; } }
+.cases-note { margin-top: 36px; max-width: 760px; color: var(--band-muted); font-size: 18px; }
+@media (max-width: 960px) { .board { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .board { grid-template-columns: repeat(2, 1fr); } }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.steps li::before { content: counter(s, decimal-leading-zero); font: 700 15px/1 var(--f-display); color: var(--teal-ink); padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.steps b { font-size: 19px; }
+.steps span { color: var(--muted); font-size: 15px; }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact { padding-block: 40px 96px; }
+.cta { background: var(--surface); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); padding: clamp(24px, 5vw, 56px); display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; position: relative; overflow: hidden; }
+.cta::after { content: ""; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px; border-radius: 50%; background: var(--grad); opacity: .12; }
+.cta h2 { font-size: clamp(26px, 3.6vw, 40px); }
+.cta-copy { display: grid; gap: 18px; min-width: 0; }
+.cta-copy p { color: var(--muted); font-size: 18px; }
+.phone { display: grid; gap: 10px; justify-items: start; position: relative; z-index: 1; min-width: 0; margin-top: 10px; padding-top: 22px; border-top: 1px solid var(--line); }
+.tg-user { font-weight: 600; color: var(--muted); }
+.tg-user a { color: var(--blue); }
+.quiz { display: grid; gap: 22px; position: relative; z-index: 1; min-width: 0; }
+.quiz fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+.quiz legend { font: 700 13px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; cursor: pointer; }
+.chips input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 10px 15px; border: 1.5px solid var(--line); border-radius: 999px; font-weight: 600; font-size: 15px; background: var(--bg); transition: border-color .15s, background .15s; }
+.chips label:hover span { border-color: var(--blue); }
+.chips input:checked + span { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--surface)); color: var(--ink); }
+.chips input:focus-visible + span { outline: 3px solid var(--teal); outline-offset: 2px; }
+.quiz-hint { font-size: 13px; color: var(--muted); }
+.quiz-hint.ok { color: var(--teal-ink); font-weight: 600; }
+.phone small { font: 600 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.phone output { font: 700 clamp(22px, 3vw, 30px)/1.1 var(--f-display); font-variant-numeric: tabular-nums; user-select: all; }
+.phone .btn { padding: 10px 16px; font-size: 14px; }
+@media (max-width: 860px) { .cta { grid-template-columns: 1fr; gap: 36px; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px calc(28px + 76px); color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+@media (min-width: 721px) { footer { padding-bottom: 28px; } }
+
+/* Mobile sticky CTA */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
+.dock .btn { flex: 1; padding: 14px 12px; font-size: 15px; }
+@media (max-width: 720px) { .dock { display: flex; } section { padding-block: 64px; } .hero { padding-block: 44px 64px; } }
+
+.hero-copy > *, .pass { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.hero-copy > :nth-child(2) { animation-delay: .06s; } .hero-copy > :nth-child(3) { animation-delay: .12s; } .hero-copy > :nth-child(4) { animation-delay: .18s; } .pass { animation-delay: .22s; }
+@keyframes rise { from { transform: translateY(14px); } }
+@media (max-width: 900px) { .pass { animation-name: rise; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></symbol>
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.6 2.9 10.8c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.2-14.9c.3-1.3-.5-1.9-1.4-1.5ZM9.3 14.1l9.4-5.9c.5-.3.9-.1.5.2l-8 7.3-.3 3.3-1.6-4.9Z"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="UlTimIr">
+      <img src="assets/emblem.png" alt="" width="44" height="44">
+      <span><span class="wordmark">Ul<b>T</b>imIr</span><small>DIGITAL AGENCY</small></span>
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#directions" data-i18n="nav_dirs">Направления</a>
+      <a href="#services" data-i18n="nav_svc">Услуги</a>
+      <a href="#cases" data-i18n="nav_cases">Проекты</a>
+      <a href="#contact" data-i18n="nav_contact">Контакты</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" id="lang-ru" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" id="lang-zh" data-lang="zh" aria-pressed="false">中文</button>
+    </div>
+    <a class="btn btn-tg js-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener" data-i18n="cta_short">Оставить заявку</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="trail" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 560 C 260 520, 420 300, 700 260 S 1080 120, 1260 40"/></svg>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="hero_eyebrow">Digital-агентство по туризму · MICE</p>
+        <h1 data-i18n-html="hero_title">Деловые поездки и выезды команд <em>под ключ</em></h1>
+        <p class="lead" data-i18n="hero_lead">Конференции, тимбилдинги, спортивные сборы и групповые поездки на события. Отели, билеты, трансферы, площадки и визы берём на себя. Вы получаете готовую поездку.</p>
+        <div class="btn-row">
+          <a class="btn btn-wa js-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span data-i18n="btn_wa">Написать в WhatsApp</span></a>
+          <a class="btn btn-tg js-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="btn_tg">Написать в Telegram</span></a>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>20+</b><span data-i18n="fact_years">лет опыта в туризме</span></div>
+          <div class="fact"><b data-i18n="fact_min_n">15 мин</b><span data-i18n="fact_min">время ответа на заявку</span></div>
+          <div class="fact"><b>RU · EN · 中文</b><span data-i18n="fact_langs">работаем онлайн</span></div>
+        </div>
+      </div>
+
+      <aside class="pass" aria-label="UlTimIr">
+        <div class="pass-head"><span data-i18n="pass_title">Посадочный талон</span><svg><use href="#i-plane"/></svg></div>
+        <div class="pass-route">
+          <div><small data-i18n="pass_from_l">Откуда</small><b data-i18n="pass_from">Ваша задача</b></div>
+          <svg class="plane" style="transform:rotate(90deg)"><use href="#i-plane"/></svg>
+          <div class="to"><small data-i18n="pass_to_l">Куда</small><b data-i18n="pass_to">Готовая поездка</b></div>
+        </div>
+        <ul class="pass-list">
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><span data-i18n="pass_1">Отель для всей группы</span></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><span data-i18n="pass_2">Авиа- и ж/д билеты</span></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><span data-i18n="pass_3">Трансферы</span></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><span data-i18n="pass_4">Конференц-зал или спортобъект</span></li>
+          <li><span class="tick"><svg><use href="#i-check"/></svg></span><span data-i18n="pass_5">Визовая поддержка</span></li>
+        </ul>
+        <div class="pass-stub">
+          <div><small data-i18n="pass_status_l">Статус</small><b data-i18n="pass_status">Все вопросы закрыты</b></div>
+          <div class="barcode" aria-hidden="true"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="cases" class="cases">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="cases_eyebrow">Проекты</p>
+        <h2 data-i18n="cases_title">Сборы для хоккейных клубов КХЛ и ВХЛ</h2>
+        <p data-i18n="cases_lead">Организуем учебно-тренировочные сборы для профессиональных команд. В спорте накладки недопустимы, поэтому нам доверяют такие проекты.</p>
+      </div>
+      <div class="board">
+        <div class="club"><small data-i18n="sp_h">Хоккей</small><b data-i18n="c1">Сарыарка</b><span data-i18n="c_sub">хоккейный клуб</span></div>
+        <div class="club"><small data-i18n="sp_h">Хоккей</small><b data-i18n="c2">АКМ</b><span data-i18n="c_sub">хоккейный клуб</span></div>
+        <div class="club"><small data-i18n="sp_h">Хоккей</small><b data-i18n="c3">Югра</b><span data-i18n="c_sub">хоккейный клуб</span></div>
+        <div class="club"><small data-i18n="sp_h">Хоккей</small><b data-i18n="c4">ТХК</b><span data-i18n="c_sub">хоккейный клуб</span></div>
+        <div class="club"><small data-i18n="sp_h">Хоккей</small><b data-i18n="c5">Трактор</b><span data-i18n="c_sub">хоккейный клуб</span></div>
+        <div class="club"><small data-i18n="sp_f">Футбол</small><b data-i18n="c6">Зенит</b><span data-i18n="c6_sub">футбольная академия</span></div>
+        <div class="club"><small data-i18n="sp_b">Баскетбол</small><b data-i18n="c7">Химки</b><span data-i18n="c7_sub">баскетбольный клуб</span></div>
+        <div class="club"><small data-i18n="sp_lv">Латвия</small><b data-i18n="c8">4 клуба</b><span data-i18n="c8_sub">Динамо Рига, Сага Рига, Лиепаяс Металлург, Даугавпилс</span></div>
+      </div>
+      <p class="cases-note" data-i18n="cases_note">Проживание, лёд, поля и залы по расписанию, трансферы и вся логистика команды. Если вашей команде нужен сбор, напишите нам.</p>
+      <h3 class="biz-title" data-i18n="biz_title">Деловые проекты</h3>
+      <div class="biz">
+        <article class="biz-card">
+          <small data-i18n="b1_tag">MICE · Китай</small>
+          <h4 data-i18n="b1_t">Кантонская выставка в Гуанчжоу</h4>
+          <p data-i18n="b1_p">Организовали поездку руководства компании ООО «ФСИ ДИС» на крупнейшую торговую выставку Китая: перелёт, отель, трансферы и участие в выставке.</p>
+        </article>
+        <article class="biz-card">
+          <small data-i18n="b2_tag">Тимбилдинг · Беларусь</small>
+          <h4 data-i18n="b2_t">Тимбилдинг на Браславских озёрах</h4>
+          <p data-i18n="b2_p">Провели выездной тимбилдинг для команды ООО «Форсайт» на берегу Браславских озёр: размещение, программа и вся логистика.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="directions">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="dirs_eyebrow">Направления</p>
+        <h2 data-i18n="dirs_title">Работаем с бизнесом любого размера</h2>
+        <p data-i18n="dirs_lead">От небольших команд до крупных компаний. Берём задачу целиком и ведём её до возвращения группы домой.</p>
+      </div>
+      <div class="dirs">
+        <article class="dir">
+          <div class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 9h6M7 12h10"/></svg></div>
+          <h3 data-i18n="d1_t">MICE</h3>
+          <p data-i18n="d1_p">Конференции, форумы, деловые встречи и инсентив-поездки. Площадка, проживание, логистика и программа в одних руках.</p>
+        </article>
+        <article class="dir">
+          <div class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 20 6-11 4 7 3-4 5 8z"/><circle cx="16.5" cy="5.5" r="2"/></svg></div>
+          <h3 data-i18n="d2_t">Тимбилдинги и корпоративный отдых</h3>
+          <p data-i18n="d2_p">Выездные тимбилдинги и отдых для коллективов в Беларуси. Готовим программы в Грузии.</p>
+          <span class="tag" data-i18n="d2_tag">Беларусь · скоро Грузия</span>
+        </article>
+        <article class="dir">
+          <div class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 0 0 4v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a2 2 0 0 0 0-4V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/><path d="M14 4v14" stroke-dasharray="2 2"/></svg></div>
+          <h3 data-i18n="d3_t">Групповые поездки на события</h3>
+          <p data-i18n="d3_p">Выставки и конференции, спортивные матчи, фестивали и концерты. Билеты, дорога и проживание для всей группы.</p>
+        </article>
+        <article class="dir">
+          <div class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v11a4 4 0 0 0 4 4h11"/><path d="M5 14h6"/><ellipse cx="17" cy="20" rx="3" ry="1"/></svg></div>
+          <h3 data-i18n="d4_t">Спортивные сборы</h3>
+          <p data-i18n="d4_p">Учебно-тренировочные сборы для профессиональных команд: отели, арены и спортивные объекты, трансферы и всё, что нужно команде.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="svc_eyebrow">Услуги</p>
+        <h2 data-i18n="svc_title">Всё для поездки в одном окне</h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg><div><b data-i18n="s1_t">Отели</b><span data-i18n="s1_p">Подбор и бронирование под группу и бюджет</span></div></div>
+        <div class="svc"><svg viewBox="0 0 24 24"><use href="#i-plane"/></svg><div><b data-i18n="s2_t">Билеты</b><span data-i18n="s2_p">Авиа, ж/д и билеты на мероприятия</span></div></div>
+        <div class="svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M3 11h18M7 19v-3M17 19v-3"/></svg><div><b data-i18n="s3_t">Трансферы</b><span data-i18n="s3_p">Аэропорт, вокзал, отель, площадка</span></div></div>
+        <div class="svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M20 20V10M2 10h20M8 14h8M12 4l8 6H4z"/></svg><div><b data-i18n="s4_t">Конференц-залы</b><span data-i18n="s4_p">Залы и оборудование для деловых событий</span></div></div>
+        <div class="svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><div><b data-i18n="s5_t">Спортивные объекты</b><span data-i18n="s5_p">Арены, лёд, залы и поля для тренировок</span></div></div>
+        <div class="svc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><div><b data-i18n="s6_t">Визовая поддержка</b><span data-i18n="s6_p">Документы и приглашения для поездки</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="why_eyebrow">Почему мы</p>
+        <h2 data-i18n="why_title">Профессионалы туризма с опытом более 20 лет</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why"><h3 data-i18n="w1_t">Скорость</h3><p data-i18n="w1_p">Быстро отвечаем и быстро собираем предложение. Решения принимаем сразу, без долгих согласований.</p></div>
+        <div class="why"><h3 data-i18n="w2_t">Качество</h3><p data-i18n="w2_p">Работаем с проверенными отелями, площадками и перевозчиками. Каждую деталь проверяем до выезда.</p></div>
+        <div class="why"><h3 data-i18n="w3_t">Закрываем все вопросы</h3><p data-i18n="w3_p">Одно окно от бронирования до решения проблем на месте. Вам не нужно искать подрядчиков и контролировать их.</p></div>
+      </div>
+      <div class="why-foot"><span data-i18n="wf1">Работаем онлайн</span><span data-i18n="wf2">Малый, средний и крупный бизнес</span><span data-i18n="wf3">Русский, английский, китайский</span></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-i18n="how_eyebrow">Как мы работаем</p>
+        <h2 data-i18n="how_title">Четыре шага до поездки</h2>
+      </div>
+      <ol class="steps">
+        <li><b data-i18n="h1_t">Вы пишете нам</b><span data-i18n="h1_p">В WhatsApp или Telegram: куда, когда, сколько человек и какая задача.</span></li>
+        <li><b data-i18n="h2_t">Мы готовим предложение</b><span data-i18n="h2_p">Варианты отелей, площадок и логистики со сметой.</span></li>
+        <li><b data-i18n="h3_t">Бронируем и организуем</b><span data-i18n="h3_p">Отели, билеты, трансферы, залы, визы. Вы согласовываете, мы делаем.</span></li>
+        <li><b data-i18n="h4_t">Ведём поездку</b><span data-i18n="h4_p">Остаёмся на связи всю поездку и решаем вопросы на месте.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="cta">
+        <div class="cta-copy">
+          <p class="eyebrow" data-i18n="cta_eyebrow">Заявка</p>
+          <h2 data-i18n="cta_title">Расскажите о поездке, остальное сделаем мы</h2>
+          <p data-i18n="cta_lead">Ответьте на три вопроса, и мы получим вашу заявку сразу с деталями. Или просто напишите в мессенджер.</p>
+          <div class="phone">
+            <small data-i18n="phone_l">WhatsApp и Telegram</small>
+            <output id="phone">+375 44 490-61-97</output>
+            <span class="tg-user">Telegram: <a href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener">@Ul_Tim_IR</a></span>
+            <button class="btn btn-ghost" type="button" id="copy-phone" data-i18n="copy">Скопировать номер</button>
+          </div>
+        </div>
+        <form class="quiz" id="quiz" novalidate>
+          <fieldset>
+            <legend data-i18n="q1">Формат</legend>
+            <div class="chips">
+              <label><input type="radio" name="fmt" id="fmt-1" value="q1_a" checked><span data-i18n="q1_a">MICE / конференция</span></label>
+              <label><input type="radio" name="fmt" id="fmt-2" value="q1_b"><span data-i18n="q1_b">Тимбилдинг</span></label>
+              <label><input type="radio" name="fmt" id="fmt-3" value="q1_c"><span data-i18n="q1_c">Поездка на событие</span></label>
+              <label><input type="radio" name="fmt" id="fmt-4" value="q1_d"><span data-i18n="q1_d">Спортивные сборы</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="q2">Сколько человек</legend>
+            <div class="chips">
+              <label><input type="radio" name="ppl" id="ppl-1" value="≤ 20"><span>≤ 20</span></label>
+              <label><input type="radio" name="ppl" id="ppl-2" value="20–50" checked><span>20–50</span></label>
+              <label><input type="radio" name="ppl" id="ppl-3" value="50–100"><span>50–100</span></label>
+              <label><input type="radio" name="ppl" id="ppl-4" value="100+"><span>100+</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="q3">Бюджет</legend>
+            <div class="chips">
+              <label><input type="radio" name="bud" id="bud-1" value="q3_a"><span data-i18n="q3_a">Эконом</span></label>
+              <label><input type="radio" name="bud" id="bud-2" value="q3_b" checked><span data-i18n="q3_b">Средний</span></label>
+              <label><input type="radio" name="bud" id="bud-3" value="q3_c"><span data-i18n="q3_c">Премиум</span></label>
+              <label><input type="radio" name="bud" id="bud-4" value="q3_d"><span data-i18n="q3_d">Пока не знаю</span></label>
+            </div>
+          </fieldset>
+          <div class="btn-row">
+            <a class="btn btn-wa" id="quiz-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span data-i18n="send_wa">Отправить в WhatsApp</span></a>
+            <a class="btn btn-tg" id="quiz-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="send_tg">Отправить в Telegram</span></a>
+          </div>
+          <p class="quiz-hint" id="quiz-hint" data-i18n="tg_hint">Для Telegram текст заявки скопируется, останется вставить его в чат.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 UlTimIr Digital Agency</span>
+    <span>Travel / IT / Digital</span>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-wa js-wa" href="https://wa.me/375444906197" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="btn btn-tg js-tg" href="https://t.me/Ul_Tim_IR" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
+</div>
+
+<script>
+(function () {
+  var PHONE = "375444906197";
+  var T = {
+    ru: {
+      _title: "UlTimIr — деловые поездки, MICE и тимбилдинги под ключ",
+      _wa: "Здравствуйте! Хочу обсудить поездку.",
+      nav_dirs: "Направления", nav_svc: "Услуги", nav_cases: "Проекты", nav_contact: "Контакты", cta_short: "Оставить заявку",
+      hero_eyebrow: "Digital-агентство по туризму · MICE",
+      hero_title: "Деловые поездки и выезды команд <em>под ключ</em>",
+      hero_lead: "Конференции, тимбилдинги, спортивные сборы и групповые поездки на события. Отели, билеты, трансферы, площадки и визы берём на себя. Вы получаете готовую поездку.",
+      btn_wa: "Написать в WhatsApp", btn_tg: "Написать в Telegram",
+      fact_years: "лет опыта в туризме", fact_min_n: "15 мин", fact_min: "время ответа на заявку", fact_langs: "работаем онлайн",
+      pass_title: "Посадочный талон", pass_from_l: "Откуда", pass_from: "Ваша задача", pass_to_l: "Куда", pass_to: "Готовая поездка",
+      pass_1: "Отель для всей группы", pass_2: "Авиа- и ж/д билеты", pass_3: "Трансферы", pass_4: "Конференц-зал или спортобъект", pass_5: "Визовая поддержка",
+      pass_status_l: "Статус", pass_status: "Все вопросы закрыты",
+      dirs_eyebrow: "Направления", dirs_title: "Работаем с бизнесом любого размера",
+      dirs_lead: "От небольших команд до крупных компаний. Берём задачу целиком и ведём её до возвращения группы домой.",
+      d1_t: "MICE", d1_p: "Конференции, форумы, деловые встречи и инсентив-поездки. Площадка, проживание, логистика и программа в одних руках.",
+      d2_t: "Тимбилдинги и корпоративный отдых", d2_p: "Выездные тимбилдинги и отдых для коллективов в Беларуси. Готовим программы в Грузии.", d2_tag: "Беларусь · скоро Грузия",
+      d3_t: "Групповые поездки на события", d3_p: "Выставки и конференции, спортивные матчи, фестивали и концерты. Билеты, дорога и проживание для всей группы.",
+      d4_t: "Спортивные сборы", d4_p: "Учебно-тренировочные сборы для профессиональных команд: отели, арены и спортивные объекты, трансферы и всё, что нужно команде.",
+      svc_eyebrow: "Услуги", svc_title: "Всё для поездки в одном окне",
+      s1_t: "Отели", s1_p: "Подбор и бронирование под группу и бюджет",
+      s2_t: "Билеты", s2_p: "Авиа, ж/д и билеты на мероприятия",
+      s3_t: "Трансферы", s3_p: "Аэропорт, вокзал, отель, площадка",
+      s4_t: "Конференц-залы", s4_p: "Залы и оборудование для деловых событий",
+      s5_t: "Спортивные объекты", s5_p: "Арены, лёд, залы и поля для тренировок",
+      s6_t: "Визовая поддержка", s6_p: "Документы и приглашения для поездки",
+      why_eyebrow: "Почему мы", why_title: "Профессионалы туризма с опытом более 20 лет",
+      w1_t: "Скорость", w1_p: "Отвечаем на заявку в течение 15 минут и быстро собираем предложение. Решения принимаем сразу, без долгих согласований.",
+      w2_t: "Качество", w2_p: "Работаем с проверенными отелями, площадками и перевозчиками. Каждую деталь проверяем до выезда.",
+      w3_t: "Закрываем все вопросы", w3_p: "Одно окно от бронирования до решения проблем на месте. Вам не нужно искать подрядчиков и контролировать их.",
+      wf1: "Работаем онлайн", wf2: "Малый, средний и крупный бизнес", wf3: "Русский, английский, китайский",
+      cases_eyebrow: "Проекты", cases_title: "Сборы для профессиональных клубов и деловые поездки",
+      cases_lead: "Организуем учебно-тренировочные сборы для команд КХЛ и ВХЛ, футбольных и баскетбольных клубов. В спорте накладки недопустимы, поэтому нам доверяют такие проекты.",
+      sp_h: "Хоккей", sp_f: "Футбол", sp_b: "Баскетбол", sp_lv: "Латвия", c_sub: "хоккейный клуб", c6: "Зенит", c6_sub: "футбольная академия", c7: "Химки", c7_sub: "баскетбольный клуб", c8: "4 клуба", c8_sub: "Динамо Рига, Сага Рига, Лиепаяс Металлург, Даугавпилс", c1: "Сарыарка", c2: "АКМ", c3: "Югра", c4: "ТХК", c5: "Трактор",
+      cases_note: "Проживание, лёд, поля и залы по расписанию, трансферы и вся логистика команды. Если вашей команде нужен сбор, напишите нам.",
+      biz_title: "Деловые проекты", b1_tag: "MICE · Китай", b1_t: "Кантонская выставка в Гуанчжоу", b1_p: "Организовали поездку руководства компании ООО «ФСИ ДИС» на крупнейшую торговую выставку Китая: перелёт, отель, трансферы и участие в выставке.", b2_tag: "Тимбилдинг · Беларусь", b2_t: "Тимбилдинг на Браславских озёрах", b2_p: "Провели выездной тимбилдинг для команды ООО «Форсайт» на берегу Браславских озёр: размещение, программа и вся логистика.",
+      how_eyebrow: "Как мы работаем", how_title: "Четыре шага до поездки",
+      h1_t: "Вы пишете нам", h1_p: "В WhatsApp или Telegram: куда, когда, сколько человек и какая задача. Ответим в течение 15 минут.",
+      h2_t: "Мы готовим предложение", h2_p: "Варианты отелей, площадок и логистики со сметой.",
+      h3_t: "Бронируем и организуем", h3_p: "Отели, билеты, трансферы, залы, визы. Вы согласовываете, мы делаем.",
+      h4_t: "Ведём поездку", h4_p: "Остаёмся на связи всю поездку и решаем вопросы на месте.",
+      cta_eyebrow: "Заявка", cta_title: "Расскажите о поездке, остальное сделаем мы", cta_lead: "Ответьте на три вопроса, и мы получим заявку сразу с деталями. Ответим в течение 15 минут.",
+      phone_l: "WhatsApp и Telegram", copy: "Скопировать номер", copied: "Номер скопирован",
+      q1: "Формат", q1_a: "MICE / конференция", q1_b: "Тимбилдинг", q1_c: "Поездка на событие", q1_d: "Спортивные сборы",
+      q2: "Сколько человек", q3: "Бюджет", q3_a: "Эконом", q3_b: "Средний", q3_c: "Премиум", q3_d: "Пока не знаю",
+      send_wa: "Отправить в WhatsApp", send_tg: "Отправить в Telegram",
+      tg_hint: "Для Telegram текст заявки скопируется, останется вставить его в чат.", tg_ok: "Текст заявки скопирован. Вставьте его в чат Telegram.",
+      msg: "Здравствуйте! Заявка с сайта UlTimIr.\nФормат: {f}\nЧеловек: {p}\nБюджет: {b}"
+    },
+    en: {
+      _title: "UlTimIr — business travel, MICE and team trips, end to end",
+      _wa: "Hello! I'd like to discuss a trip.",
+      nav_dirs: "What we do", nav_svc: "Services", nav_cases: "Projects", nav_contact: "Contact", cta_short: "Send a request",
+      hero_eyebrow: "Digital travel agency · MICE",
+      hero_title: "Business trips and team travel, <em>end to end</em>",
+      hero_lead: "Conferences, team building, sports training camps and group trips to events. We handle hotels, tickets, transfers, venues and visas. You get a trip that is ready to go.",
+      btn_wa: "Message on WhatsApp", btn_tg: "Message on Telegram",
+      fact_years: "years in travel", fact_min_n: "15 min", fact_min: "response time", fact_langs: "we work online",
+      pass_title: "Boarding pass", pass_from_l: "From", pass_from: "Your request", pass_to_l: "To", pass_to: "A ready trip",
+      pass_1: "Hotel for the whole group", pass_2: "Flights and train tickets", pass_3: "Transfers", pass_4: "Conference hall or sports venue", pass_5: "Visa support",
+      pass_status_l: "Status", pass_status: "Everything handled",
+      dirs_eyebrow: "What we do", dirs_title: "For businesses of every size",
+      dirs_lead: "From small teams to large companies. We take the whole job and stay with it until the group is back home.",
+      d1_t: "MICE", d1_p: "Conferences, forums, business meetings and incentive trips. Venue, accommodation, logistics and programme in one pair of hands.",
+      d2_t: "Team building and corporate retreats", d2_p: "Off-site team building and retreats for companies in Belarus. Programmes in Georgia are on the way.", d2_tag: "Belarus · Georgia soon",
+      d3_t: "Group trips to events", d3_p: "Trade fairs and conferences, sports matches, festivals and concerts. Tickets, travel and accommodation for the whole group.",
+      d4_t: "Sports training camps", d4_p: "Training camps for professional teams: hotels, arenas and sports facilities, transfers and everything else the team needs.",
+      svc_eyebrow: "Services", svc_title: "Everything for the trip in one place",
+      s1_t: "Hotels", s1_p: "Chosen and booked to fit your group and budget",
+      s2_t: "Tickets", s2_p: "Flights, trains and event tickets",
+      s3_t: "Transfers", s3_p: "Airport, station, hotel, venue",
+      s4_t: "Conference halls", s4_p: "Rooms and equipment for business events",
+      s5_t: "Sports facilities", s5_p: "Arenas, ice, gyms and pitches for training",
+      s6_t: "Visa support", s6_p: "Documents and invitations for the trip",
+      why_eyebrow: "Why us", why_title: "Travel professionals with more than 20 years of experience",
+      w1_t: "Speed", w1_p: "We reply to requests within 15 minutes and put together an offer fast. Decisions are made on the spot, without long approval chains.",
+      w2_t: "Quality", w2_p: "We work with proven hotels, venues and carriers, and check every detail before departure.",
+      w3_t: "Every issue solved", w3_p: "One point of contact from booking to fixing problems on site. You don't need to find or manage suppliers.",
+      wf1: "We work online", wf2: "Small, medium and large business", wf3: "Russian, English, Chinese",
+      cases_eyebrow: "Projects", cases_title: "Camps for professional clubs and business trips",
+      cases_lead: "We organise training camps for KHL and VHL teams, football and basketball clubs. In sport there is no room for mistakes, and that is why clubs trust us with these projects.",
+      sp_h: "Hockey", sp_f: "Football", sp_b: "Basketball", sp_lv: "Latvia", c_sub: "hockey club", c6: "Zenit", c6_sub: "football academy", c7: "Khimki", c7_sub: "basketball club", c8: "4 clubs", c8_sub: "Dinamo Riga, Saga Riga, Liepājas Metalurgs, Daugavpils", c1: "Saryarka", c2: "AKM", c3: "Yugra", c4: "TKH", c5: "Traktor",
+      cases_note: "Accommodation, ice, pitch and gym time on schedule, transfers and all team logistics. If your team needs a camp, message us.",
+      biz_title: "Business projects", b1_tag: "MICE · China", b1_t: "Canton Fair in Guangzhou", b1_p: "We organised a trip for the management of FSI DIS LLC to China's largest trade fair: flights, hotel, transfers and fair attendance.", b2_tag: "Team building · Belarus", b2_t: "Team building at the Braslav Lakes", b2_p: "We ran an off-site team building for the Foresight LLC team on the shore of the Braslav Lakes: accommodation, programme and all logistics.",
+      how_eyebrow: "How we work", how_title: "Four steps to your trip",
+      h1_t: "You message us", h1_p: "On WhatsApp or Telegram: where, when, how many people and what you need. We reply within 15 minutes.",
+      h2_t: "We prepare an offer", h2_p: "Options for hotels, venues and logistics, with a cost estimate.",
+      h3_t: "We book and organise", h3_p: "Hotels, tickets, transfers, halls, visas. You approve, we do the work.",
+      h4_t: "We stay with you", h4_p: "We stay in touch for the whole trip and solve issues on site.",
+      cta_eyebrow: "Request", cta_title: "Tell us about your trip and we'll take care of the rest", cta_lead: "Answer three quick questions and your request reaches us with the details. We reply within 15 minutes.",
+      phone_l: "WhatsApp and Telegram", copy: "Copy number", copied: "Number copied",
+      q1: "Format", q1_a: "MICE / conference", q1_b: "Team building", q1_c: "Trip to an event", q1_d: "Sports camp",
+      q2: "Group size", q3: "Budget", q3_a: "Economy", q3_b: "Mid-range", q3_c: "Premium", q3_d: "Not sure yet",
+      send_wa: "Send via WhatsApp", send_tg: "Send via Telegram",
+      tg_hint: "For Telegram, your request text is copied so you can paste it into the chat.", tg_ok: "Request text copied. Paste it into the Telegram chat.",
+      msg: "Hello! Request from the UlTimIr website.\nFormat: {f}\nPeople: {p}\nBudget: {b}"
+    },
+    zh: {
+      _title: "UlTimIr — 商务出行、MICE 与团队旅行一站式服务",
+      _wa: "您好！我想咨询一次出行。",
+      nav_dirs: "业务方向", nav_svc: "服务", nav_cases: "案例", nav_contact: "联系我们", cta_short: "提交需求",
+      hero_eyebrow: "旅游数字代理机构 · MICE",
+      hero_title: "商务出行与团队旅行，<em>一站式办妥</em>",
+      hero_lead: "会议、团建、体育集训以及前往各类活动的团体出行。酒店、机票、接送、场地和签证都由我们负责，您只需准备出发。",
+      btn_wa: "WhatsApp 咨询", btn_tg: "Telegram 咨询",
+      fact_years: "年旅游行业经验", fact_min_n: "15 分钟", fact_min: "需求响应时间", fact_langs: "全程线上服务",
+      pass_title: "登机牌", pass_from_l: "出发", pass_from: "您的需求", pass_to_l: "到达", pass_to: "成行的旅程",
+      pass_1: "全团住宿", pass_2: "机票与火车票", pass_3: "接送服务", pass_4: "会议厅或体育场馆", pass_5: "签证协助",
+      pass_status_l: "状态", pass_status: "所有问题已解决",
+      dirs_eyebrow: "业务方向", dirs_title: "服务各种规模的企业",
+      dirs_lead: "从小团队到大型企业。我们承接整个任务，直到团队平安返程。",
+      d1_t: "MICE", d1_p: "会议、论坛、商务会晤和奖励旅游。场地、住宿、物流和日程由同一团队负责。",
+      d2_t: "团建与企业休闲", d2_p: "在白俄罗斯为企业团队组织外出团建与休闲活动，格鲁吉亚线路即将推出。", d2_tag: "白俄罗斯 · 格鲁吉亚即将推出",
+      d3_t: "活动团体出行", d3_p: "展会与会议、体育赛事、音乐节和演唱会。为全团安排门票、交通和住宿。",
+      d4_t: "体育集训", d4_p: "为职业球队组织训练营：酒店、冰场与体育设施、接送以及球队所需的一切。",
+      svc_eyebrow: "服务", svc_title: "出行所需，一个窗口全部解决",
+      s1_t: "酒店", s1_p: "根据团队人数和预算挑选并预订",
+      s2_t: "票务", s2_p: "机票、火车票和活动门票",
+      s3_t: "接送", s3_p: "机场、车站、酒店、场地",
+      s4_t: "会议厅", s4_p: "商务活动场地与设备",
+      s5_t: "体育场馆", s5_p: "训练用的冰场、球馆和场地",
+      s6_t: "签证协助", s6_p: "出行所需文件与邀请函",
+      why_eyebrow: "为什么选择我们", why_title: "拥有 20 年以上经验的旅游专业团队",
+      w1_t: "速度", w1_p: "15 分钟内回复需求，快速出方案。当场决策，无需漫长审批。",
+      w2_t: "质量", w2_p: "合作的酒店、场地和承运商均经过验证，出发前核对每一个细节。",
+      w3_t: "解决所有问题", w3_p: "从预订到现场处理问题，只需一个联系窗口。您无需自己寻找和管理供应商。",
+      wf1: "全程线上服务", wf2: "小型、中型和大型企业", wf3: "俄语、英语、中文",
+      cases_eyebrow: "案例", cases_title: "职业俱乐部集训与商务出行",
+      cases_lead: "我们为 KHL 与 VHL 冰球队以及足球、篮球俱乐部组织训练营。体育容不得差错，因此俱乐部把这些项目交给我们。",
+      sp_h: "冰球", sp_f: "足球", sp_b: "篮球", sp_lv: "拉脱维亚", c_sub: "冰球俱乐部", c6: "泽尼特", c6_sub: "足球学院", c7: "希姆基", c7_sub: "篮球俱乐部", c8: "4 家俱乐部", c8_sub: "Dinamo Riga、Saga Riga、Liepājas Metalurgs、Daugavpils", c1: "Saryarka", c2: "AKM", c3: "Yugra", c4: "TKH", c5: "Traktor",
+      cases_note: "住宿、按时的冰场、球场和训练馆、接送以及球队的全部后勤。如果您的球队需要集训，请联系我们。",
+      biz_title: "商务项目", b1_tag: "MICE · 中国", b1_t: "广州广交会", b1_p: "为 FSI DIS 公司管理层组织前往中国最大贸易展会的行程：机票、酒店、接送及参展安排。", b2_tag: "团建 · 白俄罗斯", b2_t: "布拉斯拉夫湖畔团建", b2_p: "在布拉斯拉夫湖畔为 Foresight 公司团队组织外出团建：住宿、活动安排及全部后勤。",
+      how_eyebrow: "合作流程", how_title: "四步成行",
+      h1_t: "联系我们", h1_p: "通过 WhatsApp 或 Telegram 告诉我们：目的地、时间、人数和需求。我们将在 15 分钟内回复。",
+      h2_t: "我们制定方案", h2_p: "提供酒店、场地和物流选项及费用预算。",
+      h3_t: "预订与组织", h3_p: "酒店、票务、接送、会议厅、签证。您确认，我们执行。",
+      h4_t: "全程陪同", h4_p: "整个行程保持联系，现场解决问题。",
+      cta_eyebrow: "提交需求", cta_title: "告诉我们您的出行计划，其余交给我们", cta_lead: "回答三个简单问题，您的需求将连同细节一起发送给我们。我们将在 15 分钟内回复。",
+      phone_l: "WhatsApp 与 Telegram", copy: "复制号码", copied: "号码已复制",
+      q1: "形式", q1_a: "MICE / 会议", q1_b: "团建", q1_c: "活动出行", q1_d: "体育集训",
+      q2: "人数", q3: "预算", q3_a: "经济", q3_b: "中等", q3_c: "高端", q3_d: "暂不确定",
+      send_wa: "通过 WhatsApp 发送", send_tg: "通过 Telegram 发送",
+      tg_hint: "选择 Telegram 时，需求文本会自动复制，粘贴到聊天中即可。", tg_ok: "需求文本已复制，请粘贴到 Telegram 聊天中。",
+      msg: "您好！来自 UlTimIr 网站的需求。\n形式：{f}\n人数：{p}\n预算：{b}"
+    }
+  };
+  var cur = "ru";
+
+  function apply(lang) {
+    if (!T[lang]) lang = "ru";
+    cur = lang;
+    var d = T[lang];
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+    document.title = d._title;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) { var k = el.getAttribute("data-i18n"); if (d[k] != null) el.textContent = d[k]; });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) { var k = el.getAttribute("data-i18n-html"); if (d[k] != null) el.innerHTML = d[k]; });
+    document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang)); });
+    var wa = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(d._wa);
+    document.querySelectorAll(".js-wa").forEach(function (a) { a.href = wa; });
+    try { localStorage.setItem("ultimir-lang", lang); } catch (e) {}
+    updateQuiz();
+  }
+
+  var quiz = document.getElementById("quiz");
+  var hint = document.getElementById("quiz-hint");
+  function quizText() {
+    var d = T[cur], v = function (n) { var el = quiz.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ""; };
+    return d.msg.replace("{f}", d[v("fmt")] || "").replace("{p}", v("ppl")).replace("{b}", d[v("bud")] || "");
+  }
+  function updateQuiz() {
+    document.getElementById("quiz-wa").href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(quizText());
+    hint.classList.remove("ok"); hint.textContent = T[cur].tg_hint;
+  }
+  quiz.addEventListener("change", updateQuiz);
+  quiz.addEventListener("submit", function (e) { e.preventDefault(); });
+  document.getElementById("quiz-tg").addEventListener("click", function () {
+    try { navigator.clipboard.writeText(quizText()).then(function () { hint.classList.add("ok"); hint.textContent = T[cur].tg_ok; }, function () {}); } catch (e) {}
+  });
+
+  document.querySelectorAll("[data-lang]").forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.getAttribute("data-lang")); });
+  });
+
+  var btn = document.getElementById("copy-phone");
+  btn.addEventListener("click", function () {
+    var done = function () { btn.textContent = T[cur].copied; setTimeout(function () { btn.textContent = T[cur].copy; }, 2000); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(document.getElementById("phone")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText("+" + PHONE).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  var start = "ru";
+  var h = (location.hash || "").slice(1);
+  if (T[h]) start = h;
+  else {
+    var saved = null;
+    try { saved = localStorage.getItem("ultimir-lang"); } catch (e) {}
+    if (T[saved]) start = saved;
+    else { var nl = (navigator.language || "").toLowerCase(); if (nl.indexOf("zh") === 0) start = "zh"; else if (nl.indexOf("en") === 0) start = "en"; }
+  }
+  apply(start);
+})();
+</script>
+
+</body>
+</html>
