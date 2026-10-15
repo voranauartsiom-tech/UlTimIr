@@ -216,6 +216,9 @@ dialog#wc-dialog::backdrop { background: rgba(8, 22, 38, .55); }
 .wc-row output { font: 700 18px/1.2 var(--f-display); user-select: all; overflow-wrap: anywhere; }
 .wc-row .btn { padding: 10px 16px; font-size: 14px; }
 .wc-steps { font-size: 14px; }
+.wc-qr { margin: 0; display: grid; justify-items: center; gap: 8px; }
+.wc-qr img { width: 200px; height: 200px; background: #fff; padding: 10px; border-radius: 14px; border: 1px solid var(--line); }
+.wc-qr figcaption { font-size: 13px; color: var(--muted); }
 .quiz { display: grid; gap: 22px; position: relative; z-index: 1; min-width: 0; }
 .quiz fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
 .quiz legend { font: 700 13px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px; }
@@ -506,7 +509,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <dialog id="wc-dialog" aria-labelledby="wc-title">
   <div class="wc-box">
     <div class="wc-head"><span class="wc-ico"><svg><use href="#i-wc"/></svg></span><h3 id="wc-title">WeChat</h3><button type="button" class="wc-close" id="wc-close" aria-label="Close">×</button></div>
-    <p data-i18n="wc_lead">Добавьте нас в WeChat по ID или номеру телефона.</p>
+    <p data-i18n="wc_lead">Отсканируйте QR-код в WeChat или добавьте нас по ID.</p>
+    <figure class="wc-qr"><img src="assets/wechat-qr.png" width="200" height="200" alt="WeChat QR"><figcaption data-i18n="wc_qr">WeChat → «+» → «Сканировать»</figcaption></figure>
     <div class="wc-row"><small>WeChat ID</small><output id="wc-id">wxid_pf47jnluaeyu22</output><button type="button" class="btn btn-ghost" id="wc-copy" data-i18n="wc_copy">Скопировать ID</button></div>
     <div class="wc-row"><small data-i18n="wc_phone">Телефон</small><output>+375 44 490-61-97</output></div>
     <p class="wc-steps" data-i18n="wc_steps">WeChat → «+» → «Добавить контакт» → вставьте ID.</p>
@@ -559,7 +563,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "Бронируем и организуем", h3_p: "Отели, билеты, трансферы, залы, визы. Вы согласовываете, мы делаем.",
       h4_t: "Ведём поездку", h4_p: "Остаёмся на связи всю поездку и решаем вопросы на месте.",
       cta_eyebrow: "Заявка", cta_title: "Расскажите о поездке, остальное сделаем мы", cta_lead: "Ответьте на три вопроса, и мы получим заявку сразу с деталями. Ответим в течение 15 минут.",
-      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Отправить в WeChat", wc_lead: "Добавьте нас в WeChat по ID или номеру телефона.", wc_copy: "Скопировать ID", wc_copied: "ID скопирован", wc_phone: "Телефон", wc_steps: "WeChat → «+» → «Добавить контакт» → вставьте ID.", wc_note: "Текст заявки скопирован. Отправьте его нам в чат WeChat.", copy: "Скопировать номер", copied: "Номер скопирован",
+      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Отправить в WeChat", wc_lead: "Отсканируйте QR-код в WeChat или добавьте нас по ID.", wc_qr: "WeChat → «+» → «Сканировать»", wc_copy: "Скопировать ID", wc_copied: "ID скопирован", wc_phone: "Телефон", wc_steps: "WeChat → «+» → «Добавить контакт» → вставьте ID.", wc_note: "Текст заявки скопирован. Отправьте его нам в чат WeChat.", copy: "Скопировать номер", copied: "Номер скопирован",
       q1: "Формат", q1_a: "MICE / конференция", q1_b: "Тимбилдинг", q1_c: "Поездка на событие", q1_d: "Спортивные сборы",
       q2: "Сколько человек", q3: "Бюджет", q3_a: "Эконом", q3_b: "Средний", q3_c: "Премиум", q3_d: "Пока не знаю",
       send_wa: "Отправить в WhatsApp", send_tg: "Отправить в Telegram",
@@ -607,7 +611,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "We book and organise", h3_p: "Hotels, tickets, transfers, halls, visas. You approve, we do the work.",
       h4_t: "We stay with you", h4_p: "We stay in touch for the whole trip and solve issues on site.",
       cta_eyebrow: "Request", cta_title: "Tell us about your trip and we'll take care of the rest", cta_lead: "Answer three quick questions and your request reaches us with the details. We reply within 15 minutes.",
-      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Send via WeChat", wc_lead: "Add us on WeChat by ID or phone number.", wc_copy: "Copy ID", wc_copied: "ID copied", wc_phone: "Phone", wc_steps: "WeChat → \"+\" → \"Add Contacts\" → paste the ID.", wc_note: "Request text copied. Send it to us in WeChat.", copy: "Copy number", copied: "Number copied",
+      phone_l: "WhatsApp, Telegram, WeChat", btn_wc: "WeChat", send_wc: "Send via WeChat", wc_lead: "Scan the QR code in WeChat or add us by ID.", wc_qr: "WeChat → \"+\" → \"Scan\"", wc_copy: "Copy ID", wc_copied: "ID copied", wc_phone: "Phone", wc_steps: "WeChat → \"+\" → \"Add Contacts\" → paste the ID.", wc_note: "Request text copied. Send it to us in WeChat.", copy: "Copy number", copied: "Number copied",
       q1: "Format", q1_a: "MICE / conference", q1_b: "Team building", q1_c: "Trip to an event", q1_d: "Sports camp",
       q2: "Group size", q3: "Budget", q3_a: "Economy", q3_b: "Mid-range", q3_c: "Premium", q3_d: "Not sure yet",
       send_wa: "Send via WhatsApp", send_tg: "Send via Telegram",
@@ -655,7 +659,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       h3_t: "预订与组织", h3_p: "酒店、票务、接送、会议厅、签证。您确认，我们执行。",
       h4_t: "全程陪同", h4_p: "整个行程保持联系，现场解决问题。",
       cta_eyebrow: "提交需求", cta_title: "告诉我们您的出行计划，其余交给我们", cta_lead: "回答三个简单问题，您的需求将连同细节一起发送给我们。我们将在 15 分钟内回复。",
-      phone_l: "WeChat、WhatsApp、Telegram", btn_wc: "微信", send_wc: "通过微信发送", wc_lead: "通过微信号或手机号添加我们为好友。", wc_copy: "复制微信号", wc_copied: "微信号已复制", wc_phone: "手机号", wc_steps: "微信 → 右上角「+」→「添加朋友」→ 粘贴微信号。", wc_note: "需求文本已复制，请在微信中发送给我们。", copy: "复制号码", copied: "号码已复制",
+      phone_l: "WeChat、WhatsApp、Telegram", btn_wc: "微信", send_wc: "通过微信发送", wc_lead: "用微信扫描二维码，或通过微信号添加我们。", wc_qr: "微信 → 右上角「+」→「扫一扫」", wc_copy: "复制微信号", wc_copied: "微信号已复制", wc_phone: "手机号", wc_steps: "微信 → 右上角「+」→「添加朋友」→ 粘贴微信号。", wc_note: "需求文本已复制，请在微信中发送给我们。", copy: "复制号码", copied: "号码已复制",
       q1: "形式", q1_a: "MICE / 会议", q1_b: "团建", q1_c: "活动出行", q1_d: "体育集训",
       q2: "人数", q3: "预算", q3_a: "经济", q3_b: "中等", q3_c: "高端", q3_d: "暂不确定",
       send_wa: "通过 WhatsApp 发送", send_tg: "通过 Telegram 发送",
